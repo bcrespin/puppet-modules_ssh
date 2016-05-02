@@ -32,3 +32,4 @@ class ssh {
     mode    => 0644,
     content => $rsa_pub,
   }
+}
