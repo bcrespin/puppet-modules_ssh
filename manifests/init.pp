@@ -4,14 +4,12 @@
 class ssh {
 
 #  package { 'openssh-server': ensure => installed }
-  ~>
   file { '/etc/ssh/sshd_config':
     owner   => 'root',
     group   => 'wheel',
     mode    => '0644',
     content => template('ssh/FreeBSD_sshd.conf.erb')
   }
-  ~>
   service { 'sshd':
     ensure => running,
     enable => true,
