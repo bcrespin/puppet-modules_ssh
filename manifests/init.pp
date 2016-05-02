@@ -1,8 +1,5 @@
 # Basic SSH module
 #
-# Ensure sshd is running everywhere
-# Also generates hostkeys on demand on the puppetmaster so that rebuilding
-# a host doesn't cause MITM warnings
 #
 class ssh {
 
