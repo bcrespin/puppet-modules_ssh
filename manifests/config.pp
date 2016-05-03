@@ -16,7 +16,7 @@ class ssh::config inherits ssh {
     owner   => 'root',
     group   => $groupowner,
     mode    => 0644,
-    content =>'ssh-rsa $rsa_pub',
+    content => 'ssh-rsa ${rsa_pub} ${::hostname}\n',
    notify => Class [ssh::service],
   }
 
