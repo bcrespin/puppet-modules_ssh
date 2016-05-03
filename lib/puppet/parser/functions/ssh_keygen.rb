@@ -17,6 +17,8 @@ module Puppet::Parser::Functions
       raise Puppet::ParseError, "ssh_keygen(): config argument must be a Hash"
     end
 
+    return "rrororrororo"
+
     config = args.first
 
     config = {
