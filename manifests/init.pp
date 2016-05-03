@@ -1,35 +1,17 @@
 # Basic SSH module
 #
 #
-class ssh {
+class ssh (
+	$config = $ssh::params::config,
+	$groupowner = $ssh::params::groupownergroupowner,
+	$package_name = $ssh::params::package_name,
+	$service_name = $ssh::params::service_name
 
-#  package { 'openssh-server': ensure => installed }
-  file { '/etc/ssh/sshd_config':
-    owner   => 'root',
-    group   => 'wheel',
-    mode    => '0644',
-    content => template('ssh/FreeBSD_sshd.conf.erb')
-  }
-  service { 'sshd':
-    ensure => running,
-    enable => true,
-  }
+) inherits ssh:params	 {
 
-  # Generate RSA keys reliably
-  $rsa_priv = ssh_keygen({name => "ssh_host_rsa_${::fqdn}", dir => 'ssh/hostkeys'}) 
-  $rsa_pub  = ssh_keygen({name => "ssh_host_rsa_${::fqdn}", dir => 'ssh/hostkeys', public => 'true'}) 
-
-  file { '/etc/ssh/ssh_host_rsa_key':
-    owner   => 'root',
-    group   => 'wheel',
-    mode    => 0600,
-    content => $rsa_priv,
-  }
-
-  file { '/etc/ssh/ssh_host_rsa_key.pub':
-    owner   => 'root',
-    group   => 'wheel',
-    mode    => 0644,
-    content => $rsa_pub,
-  }
+	anchor { 'ssh::begin' : } ->
+	class { 'ssh::install' : } ->
+	class { 'ssh::config' : } ->
+	class { 'ssh::service' : } ->
+	anchor { 'ssh::end' : }
 }
