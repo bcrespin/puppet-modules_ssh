@@ -56,7 +56,7 @@ module Puppet::Parser::Functions
       else
         request = 'public'
         pub_key = File.open("#{fullpath}/#{config['name']}.pub").read
-        foo = pub_key.scan(/(^.* .*) .*$/)[0][0]
+        foo = pub_key.scan(/^(.* .*) .*$/)[0][0]
         return foo
       end
     rescue => e
