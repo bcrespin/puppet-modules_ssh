@@ -43,7 +43,7 @@ class ssh::config inherits ssh {
     mode    => 0644,
     content => template('ssh/ed25519_key.pub.erb'),
    notify => Class [ssh::service],
-
+}
 
   file { '/etc/ssh/ssh_host_rsa_key':
     owner   => 'root',
