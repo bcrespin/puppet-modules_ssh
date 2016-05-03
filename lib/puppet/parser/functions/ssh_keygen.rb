@@ -31,7 +31,7 @@ module Puppet::Parser::Functions
     agent = lookupvar('fqdn')
 
     fullpath = "/etc/puppet/#{config['dir']}/#agent"
-
+    notify ("fullpath is ${fullpath} : }
     # Make sure to write out a directory to init if necessary
     begin
       if !File.directory? fullpath
