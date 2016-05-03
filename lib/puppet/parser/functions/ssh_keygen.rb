@@ -57,6 +57,7 @@ module Puppet::Parser::Functions
         request = 'public'
         pub_key = File.open("#{fullpath}/#{config['name']}.pub").read
         foo = pub_key.scan(/^(.* .*) (.*)$/)[0][0]
+	raise Puppet::ParseError, " key is : #{foo}"
         return foo
       end
     rescue => e
