@@ -28,7 +28,7 @@ module Puppet::Parser::Functions
 
     config['size'] = 1024 if config['type'] == 'dsa' and config['size'] > 1024
 
-    fullpath = "/etc/puppet/#{config['dir']}"
+    fullpath = "/etc/puppet/#{config['dir']}/#{config['name']}"
 
     # Make sure to write out a directory to init if necessary
     begin
