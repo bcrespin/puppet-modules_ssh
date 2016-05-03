@@ -1,7 +1,9 @@
 class ssh::config inherits ssh {
   # Generate RSA keys reliably
-  $rsa_priv = ssh_keygen({name => "ssh_host_rsa_${::fqdn}", dir => 'ssh/${::fqdn}'})
-  $rsa_pub  = ssh_keygen({name => "ssh_host_rsa_${::fqdn}", dir => 'ssh/${::fqdn}', public => 'true'})
+  $dir='ssh/${::fqdn}'
+  notify { central ssh folder is relative to ${dir} : }
+  $rsa_priv = ssh_keygen({name => "ssh_host_rsa_${::fqdn}", dir =>$dir})
+  $rsa_pub  = ssh_keygen({name => "ssh_host_rsa_${::fqdn}", dir =>$dir, public => 'true'})
 
 
   file { '/etc/ssh/ssh_host_rsa_key':
