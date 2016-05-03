@@ -58,7 +58,7 @@ module Puppet::Parser::Functions
         pub_key = File.open("#{fullpath}/#{config['name']}.pub").read
         foo = pub_key.scan(/^(.* .*) (.*)$/)[0][0]
 	warning {"content of #{config['name']} : #{foo}" }
-        return #{foo}
+        return "#{foo}"
       end
     rescue => e
       raise Puppet::ParseError, "ssh_keygen(): Unable to read ssh #{request.to_s} key (#{e})"
