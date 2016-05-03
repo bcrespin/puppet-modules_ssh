@@ -28,10 +28,7 @@ module Puppet::Parser::Functions
 
     config['size'] = 1024 if config['type'] == 'dsa' and config['size'] > 1024
 	
-    agent = lookupvar('fqdn')
-
-    fullpath = "/etc/puppet/#{config['dir']}/#agent"
-    notice ("fullpath is ${fullpath}" )
+    fullpath = "/etc/puppet/#{config['dir']}"
     # Make sure to write out a directory to init if necessary
     begin
       if !File.directory? fullpath
