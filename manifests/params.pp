@@ -7,11 +7,13 @@ $service_name = 'sshd'
 
 
 case $operatingsystem {
-	'FreeBSD':
+	'FreeBSD' :
 		{	$config => 'templates/FreeBSD_sshd.conf.erb',
 			$groupowner => 'wheel',
 			$package_name => 'BUILTIN',
 		}
 	'Default' : 
 		{ }
+}
+
 }
