@@ -1,9 +1,9 @@
-class shh::params {
+class ssh::params {
 
-$config => 'templates/sshd.conf.erb',
-$groupowner => 'root',
-$package_name => 'openssh-server',
-$service_name => 'sshd',
+config => 'templates/sshd.conf.erb',
+groupowner => 'root',
+package_name => 'openssh-server',
+service_name => 'sshd',
 
 
 case $operatingsystem {
