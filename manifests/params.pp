@@ -11,7 +11,6 @@ case $operatingsystem {
 		{	$config = 'templates/FreeBSD_sshd.conf.erb',
 			$groupowner = 'wheel',
 			$package_name = 'BUILTIN',
-			$service_name = 'ssh',
 		}
 	'Default' : 
 		{ }
