@@ -25,7 +25,7 @@ include ssh::service
     owner   => 'root',
     group   => 'groupowner',
     mode    => '0644',
-    content => template('$config'),
+    content => template($config),
     notify => Class["ssh::service"],
   }
 
