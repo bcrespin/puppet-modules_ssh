@@ -13,6 +13,8 @@ class ssh::config inherits ssh {
   $ed25519_priv = ssh_keygen({name => "ssh_host_ed25519_${::fqdn}", dir =>$dir, type => 'ecdsa', size => '256'})
    $ed25519_pub = ssh_keygen({name => "ssh_host_ed25519_${::fqdn}", dir =>$dir, type => 'ecdsa', size => '256',public => 'true'})
 
+  notify { " rsa public key is $rsa_pub " : }
+
   file { '/etc/ssh/ssh_host_ecdsa_key':
     owner   => 'root',
     group   => $groupowner,
