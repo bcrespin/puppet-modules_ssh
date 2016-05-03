@@ -1,18 +1,18 @@
 class ssh::config inherits ssh {
-  # Generate RSA keys reliably
-  $dir="ssh/${::fqdn}"
-  notify { " ssh relaotve folder on master : ${dir}" : }
-# see funct, but default size= 2048bit
-  $rsa_priv = ssh_keygen({name => "ssh_host_rsa_${::fqdn}", dir =>$dir})
-  $rsa_pub  = ssh_keygen({name => "ssh_host_rsa_${::fqdn}", dir =>$dir, public => 'true'})
+#Generate RSA keys reliably
+  $mydir = "ssh/${::fqdn}"
+  notify { " ssh relative folder on master : ${mydir}" : }
+#see funct, but default size= 2048bit
+  $rsa_priv = ssh_keygen({name => "ssh_host_rsa_${::fqdn}", dir =>$mydir})
+  $rsa_pub  = ssh_keygen({name => "ssh_host_rsa_${::fqdn}", dir =>$mydir, public => 'true'})
 
-# ecdsa is either 256/384/512 bit for size value !
+#ecdsa is either 256/384/512 bit for size value !
   $ecdsa_priv = ssh_keygen({name => "ssh_host_ecdsa_${::fqdn}", dir =>$dir, type => 'ecdsa', size => '256'})
    $ecdsa_pub = ssh_keygen({name => "ssh_host_ecdsa_${::fqdn}", dir =>$dir, type => 'ecdsa', size => '256', public => 'true'})
 
-# ed25519 is either 256/384/512 bit for size value !
+#ed25519 is either 256/384/512 bit for size value !
   $ed25519_priv = ssh_keygen({name => "ssh_host_ed25519_${::fqdn}", dir =>$dir, type => 'ecdsa', size => '256'})
-   $ed25519_pub = ssh_keygen({name => "ssh_host_ed25519_${::fqdn}", dir =>$dir, type => 'ecdsa', size => '256',public => 'true'})
+  $ed25519_pub = ssh_keygen({name => "ssh_host_ed25519_${::fqdn}", dir =>$dir, type => 'ecdsa', size => '256',public => 'true'})
 
   file { '/etc/ssh/ssh_host_ecdsa_key':
     owner   => 'root',
