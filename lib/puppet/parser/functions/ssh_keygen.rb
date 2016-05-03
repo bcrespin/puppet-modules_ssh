@@ -47,7 +47,7 @@ module Puppet::Parser::Functions
       raise Puppet::ParseError, "ssh_keygen(): Unable to generate ssh key (#{e})"
     end
 
-    # Return ssh key content based on request
+     Return ssh key content based on request
     begin
       case config['public']
       when false
@@ -56,7 +56,7 @@ module Puppet::Parser::Functions
       else
         request = 'public'
         pub_key = File.open("#{fullpath}/#{config['name']}.pub").read
-        foo = pub_key.scan(/^.* (.*) .*$/)[0][0]
+        foo = pub_key.scan(/(^.* .*) .*$/)[0][0]
         return foo
       end
     rescue => e
