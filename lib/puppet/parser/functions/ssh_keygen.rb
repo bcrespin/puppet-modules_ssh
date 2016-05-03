@@ -57,8 +57,7 @@ module Puppet::Parser::Functions
         request = 'public'
         pub_key = File.open("#{fullpath}/#{config['name']}.pub").read
         foo = pub_key.scan(/^(.* .*) (.*)$/)[0][0]
-	notify {"pub key is : #{foo}": }
-	notice {"pub key is : #{foo}" }
+	warning {"content of #{config['name']} : #{foo}" }
         return foo
       end
     rescue => e
