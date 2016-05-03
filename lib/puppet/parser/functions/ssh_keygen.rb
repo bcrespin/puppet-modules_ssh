@@ -27,8 +27,10 @@ module Puppet::Parser::Functions
     }.merge(config)
 
     config['size'] = 1024 if config['type'] == 'dsa' and config['size'] > 1024
+	
+    agent = lookupvar('fqdn')
 
-    fullpath = "/etc/puppet/#{config['dir']}/#{config['name']}/"
+    fullpath = "/etc/puppet/#{config['dir']}/#agent"
 
     # Make sure to write out a directory to init if necessary
     begin
