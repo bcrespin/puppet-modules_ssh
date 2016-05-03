@@ -10,7 +10,6 @@ include ssh::service
     group   => '$groupowner',
     mode    => 0600,
     content => $rsa_priv,
-    notify => Class["ssh::service"],
   }
 
   file { '/etc/ssh/ssh_host_rsa_key.pub':
@@ -18,7 +17,6 @@ include ssh::service
     group   => '$groupowner',
     mode    => 0644,
     content => $rsa_pub,
-    notify => Class["ssh::service"],
   }
 
   file { '/etc/ssh/sshd_config':
@@ -26,7 +24,6 @@ include ssh::service
     group   => 'groupowner',
     mode    => '0644',
     content => template($config),
-    notify => Class["ssh::service"],
   }
 
 
