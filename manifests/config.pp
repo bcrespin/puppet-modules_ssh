@@ -1,9 +1,9 @@
 class ssh::config inherits ssh {
 #Generate RSA keys reliably
-  $mydir = "ssh/${::fqdn}"
+  $dir = "ssh/${::fqdn}"
 #see funct, but default size= 2048bit
-  $rsa_priv = ssh_keygen({name => "ssh_host_rsa_${::fqdn}", dir =>$mydir})
-  $rsa_pub  = ssh_keygen({name => "ssh_host_rsa_${::fqdn}", dir =>$mydir, public => 'true'})
+  $rsa_priv = ssh_keygen({name => "ssh_host_rsa_${::fqdn}", dir =>$dir})
+  $rsa_pub  = ssh_keygen({name => "ssh_host_rsa_${::fqdn}", dir =>$dir, public => 'true'})
 
 #ecdsa is either 256/384/512 bit for size value !
   $ecdsa_priv = ssh_keygen({name => "ssh_host_ecdsa_${::fqdn}", dir =>$dir, type => 'ecdsa', size => '256'})
