@@ -20,7 +20,7 @@ if  ! ($ed25519_key_size in $curve_key)
         {fail("ed25519_size variable  has bad value") }
 if 
 
-if ! ($$rsa_key_size in $rsa_allowed_key)
+if ! ($rsa_key_size in $rsa_allowed_key)
         {fail("rsa_key_size variable  has bad value") }
 if
 
