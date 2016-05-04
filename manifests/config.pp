@@ -18,7 +18,7 @@ class ssh::config inherits ssh {
     owner   => 'root',
     group   => $groupowner,
     mode    => 0600,
-    content => $rsa_priv,
+    content => $ecdsa_priv,
     notify => Class [ssh::service],
   }
 
@@ -34,7 +34,7 @@ class ssh::config inherits ssh {
     owner   => 'root',
     group   => $groupowner,
     mode    => 0600,
-    content => $rsa_priv,
+    content => $ed25519_priv,
     notify => Class [ssh::service],
   }
 
