@@ -15,9 +15,8 @@ class ssh (
 $curve_key = ['256','384','512']
 
 if $curve_key.include?($ecdsa_key_size)
-{
 	fail("ecdsa_key_size or ed25519_key_size variable  has bad value")
-}
+end	
 	anchor { 'ssh::begin' : } ->
 	class { 'ssh::install' : } ->
 	class { 'ssh::config' : } ->
