@@ -15,13 +15,11 @@ if $curve_key.include?($ecdsa_key_size)
 {
 	fail("ecdsa_key_size or ed25519_key_size variable  has bad value")
 }
-end
 
 if ($rsa_key_size  != 1024 || $rsa_key_size != 2048 || $rsa_key_size != 4096 )
 {
 	fail("rsa_key_size has to be 1024 or 2048 or 4096")
 }
-end
 
 	anchor { 'ssh::begin' : } ->
 	class { 'ssh::install' : } ->
