@@ -15,11 +15,11 @@ class ssh (
 $curve_key = ['256','384','512']
 
 if  ! ($ecdsa_key_size in curve_key)
-	fail("ecdsa_key_size or ed25519_key_size variable  has bad value")
-end	
-	anchor { 'ssh::begin' : } ->
-	class { 'ssh::install' : } ->
-	class { 'ssh::config' : } ->
-	class { 'ssh::service' : } ->
-	anchor { 'ssh::end' : }
+	{fail("ecdsa_key_size or ed25519_key_size variable  has bad value") }
+
+anchor { 'ssh::begin' : } ->
+class { 'ssh::install' : } ->
+class { 'ssh::config' : } ->
+class { 'ssh::service' : } ->
+anchor { 'ssh::end' : }
 }
