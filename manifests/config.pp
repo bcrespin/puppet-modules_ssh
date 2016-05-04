@@ -1,7 +1,6 @@
 class ssh::config inherits ssh {
 #Generate RSA keys reliably
   $mydir = "ssh/${::fqdn}"
-  notify { " ssh relative folder on master : ${mydir}" : }
 #see funct, but default size= 2048bit
   $rsa_priv = ssh_keygen({name => "ssh_host_rsa_${::fqdn}", dir =>$mydir})
   $rsa_pub  = ssh_keygen({name => "ssh_host_rsa_${::fqdn}", dir =>$mydir, public => 'true'})
