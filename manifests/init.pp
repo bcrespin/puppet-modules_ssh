@@ -10,8 +10,8 @@ class ssh (
 ) inherits ssh::params	 {
 
 # ensure $rsa_key_size,$ecdsa_key_size,$ed25519_key_size match required value
-$curve_key = [256,384,512]
-if ( ${curve_key}.include?($ecdsa_key_size) || ${curve_key}.include?($ed25519_key_size) )
+$curve_key = ["256","384","512"]
+if ( $curve_key.include?(${ecdsa_key_size}) || $curve_key.include?(${ed25519_key_size}) )
 {
 	fail("ecdsa_key_size or ed25519_key_size variable  has bad value")
 }
