@@ -2,6 +2,9 @@
 #
 #
 class ssh (
+	$ecdsa_key_size = $ssh::params::ecdsa_key_size
+	$rsa_key_size = $ssh::params::rsa_key_size
+	$ed25519_key_size = $ssh::params::$ed25519_key_size
 	$config = $ssh::params::config,
 	$groupowner = $ssh::params::groupownergroupowner,
 	$package_name = $ssh::params::package_name,
