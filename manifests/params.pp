@@ -12,7 +12,7 @@ case $operatingsystem {
 			$service_name = 'sshd'
 
 		}
-	'Default' : 
+	default : 
 		{
 		       $config = 'ssh/default_sshd.conf.erb'
                         $groupowner = 'root'
