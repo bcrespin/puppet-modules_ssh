@@ -52,10 +52,10 @@ module Puppet::Parser::Functions
       case config['public']
       when false
         request = 'private'
-        return File.open("#{fullpath}/#{config['name']}").read
+        return File.open("#{fullpath}/#{config['name']}.#{config['size']}").read
       else
         request = 'public'
-        pub_key = File.open("#{fullpath}/#{config['name']}.pub").read
+        pub_key = File.open("#{fullpath}/#{config['name']}.#{config['size']}.pub").read
         foo = pub_key.scan(/^(.* .*) (.*)$/)[0][0]
         return foo
       end
