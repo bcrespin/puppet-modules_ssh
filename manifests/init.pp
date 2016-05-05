@@ -12,7 +12,7 @@ class ssh (
 ) inherits ssh::params	 {
 
 # ensure $rsa_key_size,$ecdsa_key_size,$ed25519_key_size match required value
-$curve_key = ['256','384','512']
+$curve_key = ['256','384','521']
 $rsa_allowed_key = [ '1024' , '2048' , '4096']
 
 if  ! ($ecdsa_key_size in $curve_key)
