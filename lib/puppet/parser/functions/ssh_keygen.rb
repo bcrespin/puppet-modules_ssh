@@ -40,8 +40,8 @@ module Puppet::Parser::Functions
 
     # Do my keys exist? Well, keygen if they don't!
     begin
-      unless File.exists?("#{fullpath}/#{config['name']}.#{config['size']}") then
-        %x[/usr/bin/ssh-keygen -t #{config['type']} -b #{config['size']} -P '' -f #{fullpath}/#{config['name']}.#{config['size']}]
+      unless File.exists?("#{fullpath}/#{config['name']}_#{config['size']}") then
+        %x[/usr/bin/ssh-keygen -t #{config['type']} -b #{config['size']} -P '' -f #{fullpath}/#{config['name']}_#{config['size']}]
       end
     rescue => e
       raise Puppet::ParseError, "ssh_keygen(): Unable to generate ssh key (#{e})"
@@ -52,10 +52,10 @@ module Puppet::Parser::Functions
       case config['public']
       when false
         request = 'private'
-        return File.open("#{fullpath}/#{config['name']}.#{config['size']}").read
+        return File.open("#{fullpath}/#{config['name']}_#{config['size']}").read
       else
         request = 'public'
-        pub_key = File.open("#{fullpath}/#{config['name']}.#{config['size']}.pub").read
+        pub_key = File.open("#{fullpath}/#{config['name']}_#{config['size']}.pub").read
         foo = pub_key.scan(/^(.* .*) (.*)$/)[0][0]
         return foo
       end
